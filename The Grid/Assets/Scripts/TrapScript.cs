@@ -9,16 +9,24 @@ public class TrapScript : MonoBehaviour
     public float waitTime;
     Vector3 spikeVector;
 
-    void FixedUpdate()
+
+    void Update()
     {
-        StartCoroutine(spikePop());
+        StartCoroutine(wait());
     }
 
-    IEnumerator spikePop()
+    void spikePop()
     {
-        GameObject spikes = GameObject.FindGameObjectWithTag("spike");
+        GameObject spikes = GameObject.FindGameObjectWithTag("Spike");
         Destroy(spikes);
+        Debug.Log("Destroy Spike");
+        GameObject newspike = Instantiate(spike, spikePos.position, Quaternion.identity);
+        Debug.Log("Spawn spike");
+    }
+
+    IEnumerator wait()
+    {
         yield return new WaitForSeconds(waitTime);
-        Instantiate(spike, spikePos.position, Quaternion.identity);
+        spikePop();
     }
 }
