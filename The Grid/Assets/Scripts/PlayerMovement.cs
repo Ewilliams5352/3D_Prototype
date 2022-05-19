@@ -89,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
     void spikeDamage()
     {
         CurrentHealth -= 25f;
+        Debug.Log(CurrentHealth);
     }
 
     IEnumerator invincible()
