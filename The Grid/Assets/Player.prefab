@@ -130,3 +130,4 @@ MonoBehaviour:
   jumpPower: 375
   MaxHealth: 100
   invincTime: 0.5
+  slider: {fileID: 0}

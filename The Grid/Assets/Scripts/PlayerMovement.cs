@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,11 +16,17 @@ public class PlayerMovement : MonoBehaviour
     float CurrentHealth;
     bool can_take_damage;
     public float invincTime;
+    public Slider slider;
+
+
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         CurrentHealth = MaxHealth;
         can_take_damage = true;
+
+        slider.maxValue = MaxHealth;
+        slider.value = CurrentHealth;
     }
     // Update is called once per frame
     void Update()
@@ -29,7 +36,10 @@ public class PlayerMovement : MonoBehaviour
             Movement();
             Jump();
         }
-        Die();
+        else
+        {
+            Die();
+        }
     }
 
 
@@ -90,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
     {
         CurrentHealth -= 25f;
         Debug.Log(CurrentHealth);
+        slider.value = CurrentHealth;
     }
 
     IEnumerator invincible()
