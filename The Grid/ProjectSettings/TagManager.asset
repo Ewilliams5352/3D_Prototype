@@ -5,6 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Spike
+  - Door
+  - Key
+  - Key1
+  - Key2
+  - Key3
+  - ExitKey
+  - Door1
+  - Door2
+  - Door3
+  - ExitDoor
+  - Ground
   layers:
   - Default
   - TransparentFX

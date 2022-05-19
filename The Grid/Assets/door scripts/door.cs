@@ -12,6 +12,7 @@ public class door : MonoBehaviour
         if (other.CompareTag("Player") && camera != cameraposition)
         {
             camera.transform.position = cameraposition.transform.position;
+            camera.transform.rotation = cameraposition.transform.rotation;
             Physics2D.SyncTransforms();
         }
     }
