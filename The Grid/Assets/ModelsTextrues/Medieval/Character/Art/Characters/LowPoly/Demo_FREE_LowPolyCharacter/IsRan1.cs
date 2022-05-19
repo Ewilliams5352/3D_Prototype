@@ -22,5 +22,12 @@ public class IsRan1 : MonoBehaviour
         {
             animator.SetBool("IsRunning", true);
         }
+
+        // if the player is not pressing the w key IsRunning will be set to false
+        if (!Input.GetKey("w"))
+            // the ! means "not"
+        {
+            animator.SetBool("IsRunning", false);
+        }
     }
 }
