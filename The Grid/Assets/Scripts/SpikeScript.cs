@@ -6,7 +6,6 @@ public class SpikeScript : MonoBehaviour
 {
     public float waitTime;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +24,7 @@ public class SpikeScript : MonoBehaviour
 
         Die();
     }
+
 
     void Die()
     {
