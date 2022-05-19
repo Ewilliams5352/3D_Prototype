@@ -7,27 +7,54 @@ public class IsRan1 : MonoBehaviour
 
     Animator animator;
 
+    //simplifing code
+    int iswalkingHash;
+    int isrunningHash;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        Debug.Log(animator);
+
+        //simplifing code
+        iswalkingHash = Animator.StringToHash("iswalking");
+        isrunningHash = Animator.StringToHash("isrunning");
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if player presses W key will set isRunning boolen to true
-        if (Input.GetKey("w"))
+        bool isrunning = animator.GetBool(isrunningHash);
+        bool iswalking = animator.GetBool(iswalkingHash);
+        bool forwardPressed = Input.GetKey("w");
+        bool runPressed = Input.GetKey("left shift");
+
+        //if player presses w key
+        if (!iswalking && forwardPressed)
         {
-            animator.SetBool("IsRunning", true);
+            //then set iswalking to true
+            animator.SetBool(iswalkingHash, true);
         }
 
-        // if the player is not pressing the w key IsRunning will be set to false
-        if (!Input.GetKey("w"))
-            // the ! means "not"
+        // if w key is not pressed
+        if (iswalking && !forwardPressed)
         {
-            animator.SetBool("IsRunning", false);
+            //then set iswalking to false
+            animator.SetBool(iswalkingHash, false);
+        }
+
+        //if the player is walking and not running and Left Shift is pressed
+        if (!isrunning && (forwardPressed && runPressed))
+        {
+            //then set is running to true
+            animator.SetBool(isrunningHash, true);
+        }
+
+        //if the player stops running and walking
+        if (isrunning && (!forwardPressed || !runPressed))
+        {
+            //then set is running to false
+            animator.SetBool(isrunningHash, false);
         }
     }
-}
+    }
