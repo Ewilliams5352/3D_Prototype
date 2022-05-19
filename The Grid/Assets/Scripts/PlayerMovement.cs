@@ -4,21 +4,32 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //Movement code stuff
     public float speed;
     public float jumpPower;
     bool canJump;
     Rigidbody rb;
 
-
+    //health stuff
+    public float MaxHealth;
+    float CurrentHealth;
+    bool can_take_damage;
+    public float invincTime;
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
+        CurrentHealth = MaxHealth;
+        can_take_damage = true;
     }
     // Update is called once per frame
     void Update()
     {
-        Movement();
-        Jump();
+        if (CurrentHealth > 0)
+        {
+            Movement();
+            Jump();
+        }
+        Die();
     }
 
 
@@ -60,10 +71,45 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("ground"))
+        if (other.gameObject.CompareTag("Spike"))
+        {
+            if(can_take_damage == true)
+            {
+                spikeDamage();
+                StartCoroutine(invincible());
+            }
+        }
+
+        if (other.gameObject.CompareTag("Ground"))
         {
             canJump = true;
         }
+    }
+
+    void spikeDamage()
+    {
+        CurrentHealth -= 25f;
+    }
+
+    IEnumerator invincible()
+    {
+        can_take_damage = false;
+        yield return new WaitForSeconds(invincTime);
+        can_take_damage = true;
+    }
+
+    void Die()
+    {
+        //literally what im going to do after trying to code the stupid dart shooters ahhhhhhhhhhhhhhhhhhhhhhhhhhh
+
+        //death animation
+
+        //make screen go black
+
+        //switch to main screen or game over screen
+
+        //for now switch this once you get all of the above
+        Destroy(gameObject);
     }
 }
 
