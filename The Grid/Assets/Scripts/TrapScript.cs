@@ -4,29 +4,47 @@ using UnityEngine;
 
 public class TrapScript : MonoBehaviour
 {
+
     public GameObject spike;
     public Transform spikePos;
+    bool activated;
+
     public float waitTime;
-    Vector3 spikeVector;
-
-
-    void Update()
+    void FixedUpdate()
     {
-        StartCoroutine(wait());
+        if (activated == false)
+        {
+            StartCoroutine(popUp());
+        }
     }
 
-    void spikePop()
-    {
-        GameObject spikes = GameObject.FindGameObjectWithTag("Spike");
-        Destroy(spikes);
-        Debug.Log("Destroy Spike");
-        GameObject newspike = Instantiate(spike, spikePos.position, Quaternion.identity);
-        Debug.Log("Spawn spike");
-    }
 
-    IEnumerator wait()
+
+    IEnumerator popUp()
     {
+        activated = true;
         yield return new WaitForSeconds(waitTime);
-        spikePop();
+
+        GameObject newSpike = Instantiate(spike, spikePos.position, Quaternion.identity);
+
+        activated = false;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

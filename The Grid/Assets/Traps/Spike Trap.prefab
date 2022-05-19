@@ -237,9 +237,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1183d81e4b6096749815d943d602dcf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spike: {fileID: 0}
+  spike: {fileID: 2857624933699748240, guid: 97cd5f5fb9727f44a9d1674eecd785a1, type: 3}
   spikePos: {fileID: 8547778933873314362}
-  waitTime: 0
+  waitTime: 6
 --- !u!1 &6737214793793381850
 GameObject:
   m_ObjectHideFlags: 0
