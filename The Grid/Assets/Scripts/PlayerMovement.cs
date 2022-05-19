@@ -110,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         //switch to main screen or game over screen
 
         //for now switch this once you get all of the above
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 }
 
